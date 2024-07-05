@@ -4,9 +4,9 @@
   import Sidebar from "$lib/components/Navigation/Sidebar.svelte";
 </script>
 
-<main class="h-screen w-screen flex-col">
+<main class="h-screen w-screen flex-col overflow-hidden">
   <Topbar />
-  <section class="w-full">
+  <section class="w-full flex">
     <Sidebar />
     <slot />
   </section>

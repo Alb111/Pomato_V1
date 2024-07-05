@@ -1,10 +1,9 @@
 <script lang="ts">
     let x:boolean = true
-    import Logo from '$lib/assets/logo.png'
 </script>
 <nav>
     <div>
-        <img src={Logo} alt="logo" class="h-16"/> 
+        <img src="/assets/logo.png" alt="logo" class="h-16"/> 
         <h1>Pomato</h1>
     </div>
     <div class="hoverable">
