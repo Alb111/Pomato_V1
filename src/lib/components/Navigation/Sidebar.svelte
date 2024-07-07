@@ -1,19 +1,18 @@
 <script lang="ts">
   import { page } from "$app/stores";
-    import { Divide } from "lucide-svelte";
   type route = {
     name: string;
     link: string;
     image: string;
     selected: Boolean;
-  }
+  };
   // TODO: add more routes when you add more features
   let routes: route[] = [
-    { 
-        name: "dashboard", 
-        link: "/", 
-        selected: false, 
-        image: "/assets/dash.svg" 
+    {
+      name: "dashboard",
+      link: "/",
+      selected: false,
+      image: "/assets/dash.svg",
     },
     {
       name: "focus",
@@ -28,7 +27,7 @@
       image: "/assets/settings.svg",
     },
   ];
-  let vis=false
+  let vis = false;
 
   // function for keeping track of what page user is on rn
   function selectedPath(items: route[], path: string): void {
@@ -36,35 +35,32 @@
       item.selected = item.link === path;
     });
   }
-  
+
   // calls function on page update
   $: {
     let pathname = $page.url.pathname;
     selectedPath(routes, pathname);
     //idk why but u need reassign obj arr to get reactivity
-    routes=routes
+    routes = routes;
   }
 
-  function switchvis()
-  {
-        vis=!vis
-        const nav = document.getElementById("expand")
-        if (nav)
-          nav.classList.add('animate-expand')
-          console.log("animation triggered")
+  function switchvis() {
+    vis = !vis;
+    const nav = document.getElementById("expand");
+    if (nav) nav.classList.add("animate-expand");
+    console.log("animation triggered");
   }
-
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <nav id="expand" on:mouseenter={switchvis} on:mouseleave={switchvis}>
   {#each routes as route}
-    <a class={route.selected ? "selected" : ""} href={route.link} >
+    <a class={route.selected ? "selected" : ""} href={route.link}>
       <img src={route.image} alt="not working" />
       <h1 class={vis ? "visible" : "collapse"}>{route.name}</h1>
     </a>
   {/each}
-  </nav>
+</nav>
 
 <style>
   nav {
@@ -74,7 +70,6 @@
     @apply rounded-xl p-5 flex space-x-3 hover:bg-error-500 justify-center items-center stroke-white;
   }
   .selected {
-    @apply  bg-error-700;
+    @apply bg-error-700;
   }
-
 </style>
