@@ -4,7 +4,6 @@
   let min: number = setMin;
   let sec: number = 0;
   let moving: boolean = false;
-  //idk what type this would be
   let timerId: any;
   $: percent = ((min * 60 + sec) / (setMin * 60)) * 100;
 

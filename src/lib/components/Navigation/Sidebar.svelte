@@ -44,11 +44,12 @@
     routes = routes;
   }
 
-  function switchvis() {
-    vis = !vis;
+  async function switchvis() {
     const nav = document.getElementById("expand");
     if (nav) nav.classList.add("animate-expand");
-    console.log("animation triggered");
+    //delays vis change a bit to allow for smoother animation
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    vis = !vis;
   }
 </script>
 
@@ -67,7 +68,7 @@
     @apply z-10 w-20 h-screen rounded-xl bg-surface-700 flex-col ml-2 hover:w-40 transition-all duration-300 ease-in-out;
   }
   a {
-    @apply rounded-xl p-5 flex space-x-3 hover:bg-error-500 justify-center items-center stroke-white;
+    @apply rounded-xl p-5 flex space-x-3  justify-center items-center;
   }
   .selected {
     @apply bg-error-700;
