@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+    import { Divide } from "lucide-svelte";
   type route = {
     name: string;
     link: string;
@@ -34,7 +35,6 @@
     items.forEach((item) => {
       item.selected = item.link === path;
     });
-    console.log(routes);
   }
   
   // calls function on page update
@@ -48,22 +48,27 @@
   function switchvis()
   {
         vis=!vis
+        const nav = document.getElementById("expand")
+        if (nav)
+          nav.classList.add('animate-expand')
+          console.log("animation triggered")
   }
 
 </script>
 
-<nav on:mouseenter={switchvis} on:mouseleave={switchvis}>
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<nav id="expand" on:mouseenter={switchvis} on:mouseleave={switchvis}>
   {#each routes as route}
     <a class={route.selected ? "selected" : ""} href={route.link} >
       <img src={route.image} alt="not working" />
-      <h1 class={vis ? "text-blue-50" : "invisble"}>{route.name}</h1>
+      <h1 class={vis ? "visible" : "collapse"}>{route.name}</h1>
     </a>
   {/each}
-</nav>
+  </nav>
 
 <style>
   nav {
-    @apply w-20 h-screen rounded-xl bg-surface-700 flex-col ml-2;
+    @apply z-10 w-20 h-screen rounded-xl bg-surface-700 flex-col ml-2 hover:w-40 transition-all duration-300 ease-in-out;
   }
   a {
     @apply rounded-xl p-5 flex space-x-3 hover:bg-error-500 justify-center items-center stroke-white;
@@ -71,4 +76,5 @@
   .selected {
     @apply  bg-error-700;
   }
+
 </style>
