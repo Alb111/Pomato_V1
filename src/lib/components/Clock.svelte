@@ -1,0 +1,51 @@
+<script lang="ts">
+  import { ProgressRadial } from "@skeletonlabs/skeleton";
+
+  export let setMin: number = 2;
+  export let moving: boolean = false;
+
+  let min: number = setMin;
+  let sec: number = 0;
+  let timerId: any;
+  $: percent = ((min * 60 + sec) / (setMin * 60)) * 100;
+
+  //iterates down the seconds of timer on every call
+  function countdown() {
+    if (min == 0 && sec == 0) {
+      clearTimeout(timerId);
+    } else if (sec == 0) {
+      min--;
+      sec = 59;
+    } else {
+      sec--;
+    }
+  }
+
+  //formats number so its 00 not 0
+  function formatNumber(num: number): string {
+    return num.toString().padStart(2, "0");
+  }
+
+  //start or stop the timer
+  function startOrStop(moving: boolean) {
+    if (moving) {
+      timerId = setInterval(countdown, 1000);
+    } else {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    }
+  }
+
+  //makes timer start or stop when moving var changes
+  $: startOrStop(moving);
+</script>
+
+<!-- the progressCircle for the clock -->
+<ProgressRadial
+  value={percent}
+  strokeLinecap="round"
+  meter="stroke-primary-500"
+  track="stroke-primary-500/30"
+  width="w-60">{formatNumber(min)}:{formatNumber(sec)}</ProgressRadial
+>
