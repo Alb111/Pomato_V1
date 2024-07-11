@@ -1,10 +1,12 @@
 <script lang="ts">
   import { ProgressRadial } from "@skeletonlabs/skeleton";
+  import { count } from "../../../stores";
 
   export let setMin: number = 2;
   export let moving: boolean = false;
+  export let color: string = "stroke-primary-500";
 
-  let min: number = setMin;
+  $: min = setMin;
   let sec: number = 0;
   let timerId: any;
   $: percent = ((min * 60 + sec) / (setMin * 60)) * 100;
@@ -13,6 +15,7 @@
   function countdown() {
     if (min == 0 && sec == 0) {
       clearTimeout(timerId);
+      count.update((n) => n + 0.5);
     } else if (sec == 0) {
       min--;
       sec = 59;
@@ -29,7 +32,7 @@
   //start or stop the timer
   function startOrStop(moving: boolean) {
     if (moving) {
-      timerId = setInterval(countdown, 1000);
+      timerId = setInterval(countdown, 100);
     } else {
       if (timerId) {
         clearTimeout(timerId);
@@ -45,7 +48,7 @@
 <ProgressRadial
   value={percent}
   strokeLinecap="round"
-  meter="stroke-primary-500"
-  track="stroke-primary-500/30"
+  meter={color}
+  track={color + "/30"}
   width="w-60">{formatNumber(min)}:{formatNumber(sec)}</ProgressRadial
 >

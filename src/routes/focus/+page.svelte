@@ -1,18 +1,17 @@
 <script lang="ts">
-  import Clock from "$lib/components/Clock.svelte";
-  let moving:boolean = false;
-  function changeMoving(){
-    moving=!moving
-  }
+  import TimerCotainer from "$lib/components/Timing/TimerCotainer.svelte";
+  
 </script>
 
+<main class=" w-full flex">
+  <section>
+    <TimerCotainer/>
+ </section>
+  <section>asdkfjasdlkflk</section>
+</main>
 
-<Clock setMin={2} moving={moving}/>
-
-<!-- Start and Stop buttons -->
-<button type="button" class="btn variant-filled-primary h-10" on:click={changeMoving}>
-  start
-</button>
-<button type="button" class="btn variant-filled-primary h-10" on:click={changeMoving}>
-  stop
-</button>
+<style>
+  section {
+    @apply bg-surface-600 h-full w-full m-10  rounded-xl;
+  }
+</style>
