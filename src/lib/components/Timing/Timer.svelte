@@ -32,7 +32,7 @@
   //start or stop the timer
   function startOrStop(moving: boolean) {
     if (moving) {
-      timerId = setInterval(countdown, 100);
+      timerId = setInterval(countdown, 1000);
     } else {
       if (timerId) {
         clearTimeout(timerId);
