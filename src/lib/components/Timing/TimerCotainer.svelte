@@ -5,11 +5,11 @@
   let moving: boolean = false;
   let isBreak: boolean = false;
   function changeMoving() {
-    console.log("before")
-    console.log(moving)
+    console.log("before");
+    console.log(moving);
     moving = !moving;
-    console.log("after")
-    console.log(moving)
+    console.log("after");
+    console.log(moving);
   }
   count.subscribe((value) => {
     curCount = value;
@@ -18,9 +18,8 @@
   $: {
     if (curCount % 1 == 0) {
       isBreak = true;
-    }
-    else{
-        isBreak = false;
+    } else {
+      isBreak = false;
     }
   }
 </script>

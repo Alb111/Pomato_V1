@@ -1,13 +1,15 @@
 <script lang="ts">
   import TimerCotainer from "$lib/components/Timing/TimerCotainer.svelte";
-  
+  import TodoCotainer from "$lib/components/TodoCotainer.svelte";
 </script>
 
 <main class=" w-full flex">
   <section>
     <TimerCotainer/>
  </section>
-  <section>asdkfjasdlkflk</section>
+  <section>
+    <TodoCotainer/>
+  </section>
 </main>
 
 <style>
