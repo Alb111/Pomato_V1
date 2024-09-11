@@ -4,7 +4,7 @@ import { writable } from 'svelte/store';
 export const count = writable<number>(.5);
 
 //current min
-export const localMin = writable<number>();
+export const localMin = writable<number>(0);
 
 //current sec 
 export const localSec = writable<number>(0);

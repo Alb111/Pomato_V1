@@ -7,7 +7,11 @@
   export let moving: boolean = false;
   export let color: string = "stroke-primary-500";
 
-  localMin.set(setMin);
+  $: {
+    if ($localMin == 0 && $localSec == 0) {
+      localMin.set(setMin);
+    }
+  }
 
   $: min = $localMin;
   $: sec = $localSec;
