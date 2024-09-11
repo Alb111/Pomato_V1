@@ -1,5 +1,5 @@
 <script lang="ts">
-  
+  import { onDestroy } from "svelte";
   import { count, localMoving } from "../../../stores";
   import Timer from "./Timer.svelte";
 
@@ -11,6 +11,10 @@
   function changeMoving() {
     localMoving.set(!moving);
   }
+  onDestroy(() => {
+    localMoving.set(false);
+    console.log()
+  });
 
   let isBreak: boolean = false;
   $: {

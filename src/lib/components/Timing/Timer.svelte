@@ -1,12 +1,15 @@
 <script lang="ts">
   import { ProgressRadial } from "@skeletonlabs/skeleton";
+  import { onDestroy } from "svelte";
   import { count, localMin, localSec } from "../../../stores";
 
   export let setMin: number = 2;
   export let moving: boolean = false;
   export let color: string = "stroke-primary-500";
 
-  localMin.set(setMin);
+  if($localMin){
+    localMin.set(setMin);
+  }
 
   $: min = $localMin;
   $: sec = $localSec;
@@ -45,6 +48,10 @@
       }
     }
   }
+
+  onDestroy(() => {
+    clearTimeout(timerId);
+  });
 
   //makes timer start or stop when moving var changes
   $: startOrStop(moving);
