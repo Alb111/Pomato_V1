@@ -1,14 +1,17 @@
 <script lang="ts">
   import { ProgressRadial } from "@skeletonlabs/skeleton";
-  import { count } from "../../../stores";
+  import { count, localMin, localSec } from "../../../stores";
 
   export let setMin: number = 2;
   export let moving: boolean = false;
   export let color: string = "stroke-primary-500";
 
-  $: min = setMin;
-  let sec: number = 0;
+  localMin.set(setMin);
+
+  $: min = $localMin;
+  $: sec = $localSec;
   let timerId: any;
+
   $: percent = ((min * 60 + sec) / (setMin * 60)) * 100;
 
   //iterates down the seconds of timer on every call
@@ -17,10 +20,13 @@
       clearTimeout(timerId);
       count.update((n) => n + 0.5);
     } else if (sec == 0) {
-      min--;
-      sec = 59;
+      //min--;
+      localMin.update((n) => n - 1);
+      //sec = 59;
+      localSec.set(59);
     } else {
-      sec--;
+      localSec.update((n) => n - 1);
+      //sec--;
     }
   }
 

@@ -1,20 +1,18 @@
 <script lang="ts">
-  import { count } from "../../../stores";
+  
+  import { count, localMoving } from "../../../stores";
   import Timer from "./Timer.svelte";
-  let curCount: number;
-  let moving: boolean = false;
-  let isBreak: boolean = false;
-  function changeMoving() {
-    console.log("before");
-    console.log(moving);
-    moving = !moving;
-    console.log("after");
-    console.log(moving);
-  }
-  count.subscribe((value) => {
-    curCount = value;
-  });
 
+  let curCount: number;
+  $: curCount = $count;
+
+  let moving: boolean;
+  $: moving = $localMoving;
+  function changeMoving() {
+    localMoving.set(!moving);
+  }
+
+  let isBreak: boolean = false;
   $: {
     if (curCount % 1 == 0) {
       isBreak = true;
