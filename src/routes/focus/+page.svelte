@@ -1,6 +1,6 @@
 <script lang="ts">
   import TimerCotainer from "$lib/components/Timing/TimerCotainer.svelte";
-  import TodoCotainer from "$lib/components/TodoCotainer.svelte";
+  import TodoCotainer from "$lib/components/Todo/TodoCotainer.svelte";
 </script>
 
 <main class=" w-full flex">
