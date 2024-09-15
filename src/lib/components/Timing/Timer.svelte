@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ProgressRadial } from "@skeletonlabs/skeleton";
   import { onDestroy } from "svelte";
-  import { count, localMin, localSec } from "../../../stores";
+  import { count, localMin, localSec, localMoving } from "../../../stores";
 
   //props
   export let moving: boolean = false;
@@ -26,6 +26,7 @@
     if ($localMin == 0 && $localSec == 0) {
       clearTimeout(timerId);
       count.update((n) => n + 0.5);
+      localMoving.set(false);
     } else if ($localSec == 0) {
       //min--;
       localMin.update((n) => n - 1);

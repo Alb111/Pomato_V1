@@ -3,33 +3,26 @@
   import { count, localMoving } from "../../../stores";
   import Timer from "./Timer.svelte";
 
-  $: curCount = $count;
+  $: isBreak = $count % 1 == 0;
 
-  let moving: boolean;
-  $: moving = $localMoving;
   function changeMoving() {
-    localMoving.set(!moving);
+    localMoving.set(!$localMoving);
   }
+
   onDestroy(() => {
     localMoving.set(false);
     console.log()
   });
 
-  let isBreak: boolean = false;
-  $: {
-    if (curCount % 1 == 0) {
-      isBreak = true;
-    } else {
-      isBreak = false;
-    }
-  }
+  $: console.log($localMoving)
+
 </script>
 
 <div>
   <section></section>
   <section class="py-10">
     <Timer
-      {moving}
+      moving = {$localMoving}
       color={isBreak ? "stroke-success-500" : "stroke-primary-500"}
     />
   </section>
