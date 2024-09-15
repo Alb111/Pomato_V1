@@ -56,6 +56,7 @@
 
   onDestroy(() => {
     clearTimeout(timerId);
+    localSec.set(0)
   });
 
   //makes timer start or stop when moving var changes
