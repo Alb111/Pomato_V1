@@ -3,7 +3,6 @@
   import { count, localMoving } from "../../../stores";
   import Timer from "./Timer.svelte";
 
-  let curCount: number;
   $: curCount = $count;
 
   let moving: boolean;
@@ -30,7 +29,6 @@
   <section></section>
   <section class="py-10">
     <Timer
-      setMin={isBreak ? 10 : 1}
       {moving}
       color={isBreak ? "stroke-success-500" : "stroke-primary-500"}
     />

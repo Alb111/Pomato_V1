@@ -3,28 +3,30 @@
   import { onDestroy } from "svelte";
   import { count, localMin, localSec } from "../../../stores";
 
-  export let setMin: number = 2;
+  //props
   export let moving: boolean = false;
   export let color: string = "stroke-primary-500";
 
+  //reactive vars
+  $: isBreak = $count % 1 == 0;
+  let setMin:number;
   $: {
-    if ($localMin == 0 && $localSec == 0) {
-      localMin.set(setMin);
-    }
+    setMin = isBreak ? 2 : 1;
+    localMin.set(setMin);
   }
+  $: percent = (($localMin * 60 + $localSec) / (setMin * 60)) * 100;
 
-  $: min = $localMin;
-  $: sec = $localSec;
+  //other vars
   let timerId: any;
 
-  $: percent = ((min * 60 + sec) / (setMin * 60)) * 100;
+
 
   //iterates down the seconds of timer on every call
   function countdown() {
-    if (min == 0 && sec == 0) {
+    if ($localMin == 0 && $localSec == 0) {
       clearTimeout(timerId);
       count.update((n) => n + 0.5);
-    } else if (sec == 0) {
+    } else if ($localSec == 0) {
       //min--;
       localMin.update((n) => n - 1);
       //sec = 59;
@@ -43,7 +45,7 @@
   //start or stop the timer
   function startOrStop(moving: boolean) {
     if (moving) {
-      timerId = setInterval(countdown, 1000);
+      timerId = setInterval(countdown, 100);
     } else {
       if (timerId) {
         clearTimeout(timerId);
@@ -65,5 +67,5 @@
   strokeLinecap="round"
   meter={color}
   track={color + "/30"}
-  width="w-60">{formatNumber(min)}:{formatNumber(sec)}</ProgressRadial
+  width="w-60">{formatNumber($localMin)}:{formatNumber($localSec)}</ProgressRadial
 >
