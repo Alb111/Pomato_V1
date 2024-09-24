@@ -1,12 +1,19 @@
 <script lang="ts">
   export let task: string;
   export let completed: boolean;
-  export let onToggle: () => void; // Callback function to handle the toggle
 
-  // Function to handle the checkbox change
-  const handleChange = () => {
-    onToggle(); // Call the callback function when the checkbox is clicked
-  };
+  import { todos } from "../../../stores";
+
+  function change() {
+    todos.update((todoArray) => {
+      return todoArray.map((todo) => {
+        if (todo.task === task) {
+          return { ...todo, complete: !todo.complete };
+        }
+        return todo;
+      });
+    });
+  }
 </script>
 
 <div
@@ -16,7 +23,7 @@
   <input
     type="checkbox"
     bind:checked={completed}
-    on:change={handleChange}
+    on:change={change}
     class="form-checkbox h-5 w-5 rounded focus:ring-0 mr-3 {completed
       ? 'text-primary-500'
       : 'text-gray-400'}"
