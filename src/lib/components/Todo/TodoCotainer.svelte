@@ -17,44 +17,52 @@
   };
 
   const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === 'Enter') {
-      event.preventDefault(); 
+    if (event.key === "Enter") {
+      event.preventDefault();
       addToArray();
     }
   };
 </script>
 
-<main class="flex flex-col items-center min-h-screen bg-primary p-6">
-  <h1
-    class="text-4xl font-bold mb-6 text-secondary shadow-md bg-surface-700 px-4 py-4 rounded-lg"
-  >
-    Todo
-  </h1>
+<main>
+  <h1>Todo</h1>
 
-  <section
-    class="flex flex-col items-center w-full max-w-4xl bg-surface-700 rounded-lg p-6 shadow-lg overflow-auto space-y-2"
-    style="max-height: 400px;" 
-  >
+  <section>
     {#each $todos as todo}
       <TodoItem task={todo.task} completed={todo.complete} />
     {/each}
   </section>
 
-  <aside
-    class="flex items-center justify-center mt-6 w-full max-w-4xl space-x-4"
-  >
+  <aside>
     <input
       type="text"
       bind:value={x}
       on:keydown={handleKeydown}
-      class="w-full max-w-md p-3 rounded-lg bg-surface-700 focus:ring-2 focus:ring-primary-500 placeholder-white"
       placeholder="Add Task"
     />
-    <button
-      on:click={addToArray}
-      class="flex items-center px-5 py-2 bg-primary-500 text-white rounded-lg shadow-md hover:bg-primary-600 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500"
-    >
+    <button on:click={addToArray}>
       <BookCheck size={25} />
     </button>
   </aside>
 </main>
+
+<style>
+  main {
+    @apply flex flex-col items-center min-h-screen bg-surface-600 rounded-xl p-6;
+  }
+  h1 {
+    @apply text-4xl font-bold mb-6 shadow-md bg-surface-700 px-4 py-4 rounded-lg;
+  }
+  section {
+    @apply flex flex-col items-center w-full max-w-4xl h-96 bg-surface-700 rounded-lg p-6 shadow-lg overflow-auto space-y-2;
+  }
+  aside {
+    @apply flex items-center justify-center mt-6 w-full max-w-4xl space-x-4;
+  }
+  input {
+    @apply w-full max-w-md p-3 rounded-lg bg-surface-700 focus:ring-2 focus:ring-primary-500 placeholder-white;
+  }
+  button {
+    @apply flex items-center px-5 py-2 bg-primary-500 text-white rounded-lg shadow-md hover:bg-primary-600 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500;
+  }
+</style>

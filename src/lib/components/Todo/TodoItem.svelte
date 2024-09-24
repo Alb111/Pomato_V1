@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class="flex items-center w-full min-h-12 bg-surface-500 border border-surface-900 rounded-lg shadow-sm px-5"
+  class=""
 >
   <!-- Checkbox -->
   <input
@@ -35,3 +35,9 @@
     {task}
   </span>
 </div>
+
+<style>
+  div{
+    @apply flex items-center w-full min-h-12 bg-surface-500 border border-surface-900 rounded-lg shadow-sm px-5;
+  }
+</style>
