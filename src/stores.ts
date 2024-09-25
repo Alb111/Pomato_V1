@@ -17,6 +17,6 @@ interface TodoItem {
 export const todos = writable<TodoItem[]>([]);
 
 //Settings stuff
-export const localName = writable<string>("enter name")
+export const localName = writable<string>("Hello World")
 export const localStudyTime = writable<number>(2)
 export const localBreakTime = writable<number>(1)

@@ -1,15 +1,49 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script>
+  import { localName, count } from "../stores";
+  let userName = $localName;
+  let totalCyclesCompleted = $count;
+  let quote = "loadsfdsfdf";
+</script>
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-5">
-		<h1 class="h1">Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout</li>
-			<li><code class="code">/src/app.postcss</code> - app wide css</li>
-			<li>
-				<code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents
-			</li>
-		</ul>
-	</div>
-</div>
+<main>
+  <div>
+    <h1>
+      Welcome Back <br /> <span class="redSpan">{userName}</span>!
+    </h1>
+    <p>
+      You have completed a total of: <br />
+      <span class="blockSpan">{totalCyclesCompleted} study-break cycles</span>
+    </p>
+    <p><span class="redSpan">Good Work</span> <br /> Lets add to that number</p>
+    <a href="/focus">
+      <button> Start Pomato Session</button>
+    </a>
+  </div>
+  <div>Add image</div>
+</main>
+
+<style>
+  main {
+    @apply flex w-screen;
+  }
+  div {
+    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 pt-24 mx-4 flex flex-col;
+  }
+  h1 {
+    @apply text-7xl font-bold;
+  }
+  p {
+    @apply text-5xl text-white mb-4;
+  }
+  .redSpan {
+    @apply text-primary-500;
+  }
+
+  .blockSpan {
+    @apply flex p-2 bg-surface-800 font-bold text-center justify-center mt-4;
+  }
+
+  button {
+    @apply w-full bg-primary-700 text-white text-3xl py-4 mt-10 rounded-xl hover:bg-success-600 transition duration-200;
+  }
+</style>

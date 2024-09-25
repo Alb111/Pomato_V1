@@ -19,7 +19,7 @@
         @apply flex items-center mx-4 my-2 space-x-3;
     }
     h1 {
-        @apply font-mono font-medium px-2 text-2xl;
+        @apply font-bold px-2 text-4xl;
     }
     .hoverable {
         @apply rounded-xl px-2 flex hover:bg-error-500;
