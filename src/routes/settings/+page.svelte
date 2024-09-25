@@ -1,12 +1,16 @@
 <script>
-  let name = "";
-  let studyTime = "";
-  let breakTime = "";
+  import { localStudyTime, localBreakTime, localName } from "../../stores";
+  let name = $localName;
+  let studyTime = $localStudyTime;
+  let breakTime = $localBreakTime;
 
+  // @ts-ignore
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle the form submission
     console.log("Updated settings:", { name, studyTime, breakTime });
+    localStudyTime.set(studyTime);
+    localBreakTime.set(breakTime);
+    localName.set(name)
     alert("Settings updated!");
   };
 </script>

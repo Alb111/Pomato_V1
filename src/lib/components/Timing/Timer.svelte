@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ProgressRadial } from "@skeletonlabs/skeleton";
   import { onDestroy } from "svelte";
-  import { count, localMin, localSec, localMoving } from "../../../stores";
+  import { count, localMin, localSec, localMoving, localStudyTime, localBreakTime } from "../../../stores";
 
   //props
   export let moving: boolean = false;
@@ -11,7 +11,7 @@
   $: isBreak = $count % 1 == 0;
   let setMin:number;
   $: {
-    setMin = isBreak ? 2 : 1;
+    setMin = isBreak ? $localBreakTime : $localStudyTime;
     localMin.set(setMin);
   }
   $: percent = (($localMin * 60 + $localSec) / (setMin * 60)) * 100;
