@@ -6,7 +6,7 @@
 </script>
 
 <main>
-  <div>
+  <div class="leftdiv">
     <h1>
       Welcome Back <br /> <span class="redSpan">{userName}</span>!
     </h1>
@@ -19,15 +19,18 @@
       <button> Start Pomato Session</button>
     </a>
   </div>
-  <div>Add image</div>
+  <div class="rightdiv"><img src="/assets/studying.png" alt="not working" /></div>
 </main>
 
 <style>
   main {
     @apply flex w-screen;
   }
-  div {
-    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 pt-24 mx-4 flex flex-col;
+  .leftdiv {
+    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 pt-32 mx-4 flex flex-col;
+  }
+  .rightdiv {
+    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 mx-4 flex flex-col;
   }
   h1 {
     @apply text-7xl font-bold;
