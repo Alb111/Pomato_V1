@@ -52,7 +52,7 @@
     @apply w-full;
   }
   .maindiv {
-    @apply mx-10 w-1/2 p-6 bg-surface-700 rounded-lg shadow-md flex-col;
+    @apply m-5 w-1/2 p-6 bg-surface-700 rounded-lg shadow-md flex-col;
   }
   input {
     @apply w-full border border-surface-900 bg-surface-900 h-12 rounded text-center focus:outline-none focus:ring focus:ring-primary-400;

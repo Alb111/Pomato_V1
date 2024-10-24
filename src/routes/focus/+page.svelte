@@ -14,6 +14,6 @@
 
 <style>
   section {
-    @apply bg-surface-600 h-full w-full m-10  rounded-xl;
+    @apply bg-surface-600 h-full w-full m-5 rounded-xl;
   }
 </style>

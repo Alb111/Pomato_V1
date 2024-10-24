@@ -27,10 +27,10 @@
     @apply flex w-screen;
   }
   .leftdiv {
-    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 pt-32 mx-4 flex flex-col;
+    @apply m-5 bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 pt-24 mx-4 flex flex-col;
   }
   .rightdiv {
-    @apply bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 mx-4 flex flex-col;
+    @apply m-5 bg-surface-700 rounded-lg shadow-lg p-6 text-center w-1/2 mx-4 flex flex-col;
   }
   h1 {
     @apply text-7xl font-bold;
