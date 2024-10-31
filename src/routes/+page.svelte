@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  export let data;
+  $: ({user} = data)
   import { localName, count } from "../stores";
   let userName = $localName;
   let totalCyclesCompleted = $count;
