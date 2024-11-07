@@ -1,11 +1,15 @@
 <script lang="ts">
-  import "../app.postcss";
-  import Topbar from "$lib/components/Navigation/Topbar.svelte";
-  import Sidebar from "$lib/components/Navigation/Sidebar.svelte";
-	import { invalidate } from '$app/navigation';
+	import "../app.postcss";
+	import Topbar from "$lib/components/Navigation/Topbar.svelte";
+	import Sidebar from "$lib/components/Navigation/Sidebar.svelte";
+	import { goto, invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	export let data;
+	let loggedIn:boolean = data ? true : false;
+
+
+
 	$: ({ session, supabase } = data);
 
 	onMount(() => {
@@ -17,11 +21,17 @@
 
 		return () => data.subscription.unsubscribe();
 	});
+
+	async function logout() {
+		await supabase.auth.signOut();
+		goto ("/", { invalidateAll: true });
+	}
+
 </script>
 
 
 <main class="h-screen w-screen flex-col overflow-hidden">
-  <Topbar />
+  <Topbar x={loggedIn} />
   <section class="w-full flex">
     <Sidebar />
     <slot />

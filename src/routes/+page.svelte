@@ -1,10 +1,12 @@
 <script lang="ts">
-  export let data;
-  $: ({user} = data)
   import { localName, count } from "../stores";
+  export let data;
+
+  console.log(data)
+  localName.set(data.user?.email|| "email not loaded");
+
   let userName = $localName;
   let totalCyclesCompleted = $count;
-  let quote = "loadsfdsfdf";
 </script>
 
 <main>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    let x:boolean = true
+    export let x:boolean;
 </script>
 <nav>
     <div>
@@ -7,7 +7,7 @@
         <h1>Pomato</h1>
     </div>
     <div class="hoverable">
-        <h1>{ x ? "Login" : "Logout"}</h1>
+        <h1>{ x ? "Logout" : "Login"}</h1>
     </div>
 </nav>
 
