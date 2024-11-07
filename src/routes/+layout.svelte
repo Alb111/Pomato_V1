@@ -24,14 +24,14 @@
 
 	async function logout() {
 		await supabase.auth.signOut();
-		goto ("/", { invalidateAll: true });
+		goto ("/auth", { invalidateAll: true });
 	}
 
 </script>
 
 
 <main class="h-screen w-screen flex-col overflow-hidden">
-  <Topbar x={loggedIn} />
+  <Topbar onButtonClick={logout} />
   <section class="w-full flex">
     <Sidebar />
     <slot />
