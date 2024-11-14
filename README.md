@@ -3,6 +3,7 @@
      - [x] Make the DB watch some vidoes on how it works
      - [x] login, logout, signup
      - [x] Clean up login page
+     - [x] Protected Routes
      - [ ] Have the Writables Sync with User data
 
 - [ ] Try to add a Spotify Embed

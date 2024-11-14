@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
-  import { formSchema, type FormSchema } from "./schema";
+  import { formSchema, type FormSchema } from "../../../routes/schema";
   import {
     type SuperValidated,
     type Infer,
@@ -18,7 +18,7 @@
   const { form: formData, enhance } = form;
 </script>
 
-<form method="POST" use:enhance action="?/signup">
+<form method="POST" use:enhance action="?/login">
   <Form.Field {form} name="email">
     <Form.Control let:attrs>
       <Form.Label>Username</Form.Label>
@@ -34,5 +34,5 @@
     <Form.FieldErrors />
   </Form.Field>
 
-  <Form.Button class="w-full">Create New Account</Form.Button>
+  <Form.Button class="w-full">Login into Account</Form.Button>
 </form>

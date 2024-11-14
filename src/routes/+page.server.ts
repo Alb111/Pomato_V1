@@ -27,7 +27,7 @@ export const actions: Actions = {
       console.log(error)
       return setError(form, "password", "This account already exisits")
     } else {
-      return redirect(303, "/");
+      return redirect(303, "/private");
     }
   },
   login: async (event) => {
@@ -46,7 +46,7 @@ export const actions: Actions = {
       console.log(error)
       return setError(form, "password", "Wrong Password/email")
     } else {
-      return redirect(303, "/");
+      return redirect(303, "/private");
     }
   },
 

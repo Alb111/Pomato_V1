@@ -10,19 +10,19 @@
   let routes: route[] = [
     {
       name: "dashboard",
-      link: "/",
+      link: "/private",
       selected: false,
       image: "/assets/dash.svg",
     },
     {
       name: "focus",
-      link: "/focus",
+      link: "/private/focus",
       selected: false,
       image: "/assets/book.svg",
     },
     {
       name: "settings",
-      link: "/settings",
+      link: "/private/settings",
       selected: false,
       image: "/assets/settings.svg",
     },

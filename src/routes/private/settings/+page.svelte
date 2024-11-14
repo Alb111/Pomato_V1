@@ -1,5 +1,5 @@
 <script>
-  import { localStudyTime, localBreakTime, localName } from "../../stores";
+  import { localStudyTime, localBreakTime, localName } from "../../../stores";
   let name = $localName;
   let studyTime = $localStudyTime;
   let breakTime = $localBreakTime;
